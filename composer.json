@@ -1,0 +1,15 @@
+{
+    "name": "kercode/coffee",
+    "autoload": {
+        "psr-4": {
+            "Kercode\\Coffee\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Baptiste LEJEUNE",
+            "email": "baptiste.lejeune@hotmail.com"
+        }
+    ],
+    "require": {}
+}
