@@ -6,7 +6,8 @@
 // password : 46r2WkZw
 
 
-$bdd = new PDO("mysql:host=mysql-69240-0.cloudclusters.net:15630;
+$bdd = new PDO("mysql:dbname=abclight;
+host=mysql-69240-0.cloudclusters.net:15630;
 charset=utf8",
 "admin",
 "46r2WkZw");
