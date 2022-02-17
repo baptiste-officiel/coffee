@@ -25,5 +25,13 @@ $db = dbaccess();
 $req = $db->query('SELECT name FROM waiter')->fetchAll();
 
 foreach ($req as $dbreq) {
-  echo $dbreq['name'] . "<br>";
+  echo $dbreq['name'] . "<br>" .PHP_EOL;
+}
+
+echo "<br>" .PHP_EOL;
+
+$edibles = $db->query('SELECT name, price FROM edible')->fetchAll();
+
+foreach($edibles as $edible){
+    echo $edible['name'] . " au prix de " . $edible['price'] . "€<br>" .PHP_EOL;
 }
