@@ -1,31 +1,28 @@
+
+
+
+
 <?php
 
-// host : mysql-69240-0.cloudclusters.net
-// port : 15630
-// username : admin 
-// password : 46r2WkZw
+require('vendor/autoload.php');
 
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-$bdd = new PDO("mysql:dbname=abclight;
-host=mysql-69240-0.cloudclusters.net:15630;
-charset=utf8",
-"admin",
-"46r2WkZw");
+function dbaccess() {
+  $dbConnection = "mysql:dbname=". $_ENV['DB_NAME'] ."; host=". $_ENV['DB_HOST'] .":". $_ENV['DB_PORT'] ."; charset=utf8";
+  $user = $_ENV['DB_USERNAME'];
+  $pwd = $_ENV['DB_PASSWORD'];
+  
+  $db = new PDO ($dbConnection, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
+  return $db;
+}
+  
+$db = dbaccess();
 
-// var_dump($bdd);
+$req = $db->query('SELECT name FROM waiter')->fetchAll();
 
-
-
-
-
-$res = $bdd->query("SELECT * FROM waiter");
-
-
-// var_dump($res->fetchAll());
-
-$waiter = $res->fetchAll();
-
-foreach($waiter as $name){
-    echo $name['name'] . "<br>";
+foreach ($req as $dbreq) {
+  echo $dbreq['name'] . "<br>";
 }
